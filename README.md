@@ -8,7 +8,7 @@
 
 ### Streamlit Cloud Deployment
 
-🔗 https://community-intelligence-platform.streamlit.app
+🔗 https://community-intelligence-platform-e4z3n2nugpclbakdsnjmbx.streamlit.app
 
 ### GitHub Repository
 
@@ -189,7 +189,7 @@ https://communityintel.duckdns.org
 
 ### Streamlit Cloud
 
-https://community-intelligence-platform.streamlit.app
+https://community-intelligence-platform-e4z3n2nugpclbakdsnjmbx.streamlit.app
 
 ### Local Development
 
