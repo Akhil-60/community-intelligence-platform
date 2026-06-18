@@ -1,0 +1,215 @@
+===== COMMUNITY REPORT =====
+
+
+Community ID: 1
+Total Members: 12
+
+Top Researchers:
+Renaud Lambiotte | Connections: 7
+Andrea Lancichinetti | Connections: 6
+Santo Fortunato | Connections: 4
+Martin Rosvall | Connections: 4
+Alcides Viamontes Esquivel | Connections: 4
+----------------------------------------
+
+Community ID: 2
+Total Members: 2
+
+Top Researchers:
+Jörg Reichardt | Connections: 1
+Stefan Bornholdt | Connections: 1
+----------------------------------------
+
+Community ID: 3
+Total Members: 2
+
+Top Researchers:
+Jordi Duch | Connections: 1
+Àlex Arenas | Connections: 1
+----------------------------------------
+
+Community ID: 4
+Total Members: 3
+
+Top Researchers:
+Jierui Xie | Connections: 2
+Stephen Kelley | Connections: 2
+Bolesław K. Szymański | Connections: 2
+----------------------------------------
+
+Community ID: 5
+Total Members: 6
+
+Top Researchers:
+Jure Leskovec | Connections: 5
+Jaewon Yang | Connections: 3
+Kevin Lang | Connections: 2
+Michael W. Mahoney | Connections: 2
+Julian Mcauley | Connections: 2
+----------------------------------------
+
+Community ID: 8
+Total Members: 2
+
+Top Researchers:
+Ludo Waltman | Connections: 1
+Nees Jan van Eck | Connections: 1
+----------------------------------------
+
+Community ID: 9
+Total Members: 4
+
+Top Researchers:
+Symeon Papadopoulos | Connections: 3
+Ioannis Kompatsiaris | Connections: 3
+Athena Vakali | Connections: 3
+Ploutarchos Spyridonos | Connections: 3
+----------------------------------------
+
+Community ID: 10
+Total Members: 3
+
+Top Researchers:
+Zhao Yang | Connections: 2
+René Algesheimer | Connections: 2
+Claudio J. Tessone | Connections: 2
+----------------------------------------
+
+Community ID: 11
+Total Members: 2
+
+Top Researchers:
+Fragkiskos D. Malliaros | Connections: 1
+Michalis Vazirgiannis | Connections: 1
+----------------------------------------
+
+Community ID: 12
+Total Members: 5
+
+Top Researchers:
+Muhammad Aqib Javed | Connections: 4
+Muhammad Shahzad Younis | Connections: 4
+Siddique Latif | Connections: 4
+Junaid Qadir | Connections: 4
+Adeel Baig | Connections: 4
+----------------------------------------
+
+Community ID: 13
+Total Members: 3
+
+Top Researchers:
+Leto Peel | Connections: 2
+Daniel B. Larremore | Connections: 2
+Aaron Clauset | Connections: 2
+----------------------------------------
+
+Community ID: 14
+Total Members: 4
+
+Top Researchers:
+Vincent Traag | Connections: 3
+Paul Van Dooren | Connections: 2
+Yurii Nesterov | Connections: 2
+Jeroen Bruggeman | Connections: 1
+----------------------------------------
+
+Community ID: 15
+Total Members: 4
+
+Top Researchers:
+Tianbao Yang | Connections: 3
+Rong Jin | Connections: 3
+Yün Chi | Connections: 3
+Shenghuo Zhu | Connections: 3
+----------------------------------------
+
+Community ID: 16
+Total Members: 2
+
+Top Researchers:
+Punam Bedi | Connections: 1
+Chhavi Sharma | Connections: 1
+----------------------------------------
+
+Community ID: 17
+Total Members: 5
+
+Top Researchers:
+Zhenping Li | Connections: 4
+Shihua Zhang | Connections: 4
+Rui‐Sheng Wang | Connections: 4
+Xiang‐Sun Zhang | Connections: 4
+Luonan Chen | Connections: 4
+----------------------------------------
+
+Community ID: 18
+Total Members: 6
+
+Top Researchers:
+Pan Hui | Connections: 5
+Jon Crowcroft | Connections: 5
+Eiko Yoneki | Connections: 3
+Shu Yan Chan | Connections: 3
+Ian X. Y. Leung | Connections: 3
+----------------------------------------
+
+Community ID: 19
+Total Members: 5
+
+Top Researchers:
+Sandro Cavallari | Connections: 4
+Vincent W. Zheng | Connections: 4
+Hongyun Cai | Connections: 4
+Kevin Chen–Chuan Chang | Connections: 4
+Erik Cambria | Connections: 4
+----------------------------------------
+
+Community ID: 20
+Total Members: 12
+
+Top Researchers:
+Jia Wu | Connections: 17
+Di Jin | Connections: 17
+Xing Su | Connections: 11
+Shan Xue | Connections: 11
+Fanzhen Liu | Connections: 11
+----------------------------------------
+
+Community ID: 21
+Total Members: 4
+
+Top Researchers:
+Ioannis Psorakis | Connections: 3
+Stephen Roberts | Connections: 3
+Mark Ebden | Connections: 3
+Ben C. Sheldon | Connections: 3
+----------------------------------------
+
+Community ID: 6
+Total Members: 4
+
+Top Researchers:
+Pasquale De Meo | Connections: 3
+Emilio Ferrara | Connections: 3
+Giacomo Fiumara | Connections: 3
+Alessandro Provetti | Connections: 3
+----------------------------------------
+
+Community ID: 7
+Total Members: 2
+
+Top Researchers:
+Lei Tang | Connections: 1
+Huan Liu | Connections: 1
+----------------------------------------
+
+Community ID: 0
+Total Members: 6
+
+Top Researchers:
+Zhizhi Yu | Connections: 7
+Pengfei Jiao | Connections: 7
+Shirui Pan | Connections: 7
+Dongxiao He | Connections: 7
+Philip L. H. Yu | Connections: 7
+----------------------------------------
