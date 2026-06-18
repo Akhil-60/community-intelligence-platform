@@ -51,37 +51,27 @@ The platform uses graph theory, network science, and community detection algorit
 
 ## System Architecture
 
+![System Architecture](assets/System%20framework.png)
+
+## Workflow
+
+```text
 OpenAlex API
-
-↓
-
+      ↓
 Research Data Collection
-
-↓
-
+      ↓
 Author Collaboration Network
-
-↓
-
+      ↓
 Graph Construction (NetworkX)
-
-↓
-
+      ↓
 Community Detection (Louvain Algorithm)
-
-↓
-
+      ↓
 Researcher Ranking
-
-↓
-
+      ↓
 Topic Detection
-
-↓
-
+      ↓
 Interactive Dashboard (Streamlit)
-
----
+```
 
 ## Technology Stack
 
