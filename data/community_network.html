@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 750px;
+                 background-color: #222222;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"font": {"color": "white"}, "group": 1, "id": "Santo Fortunato", "label": "Santo Fortunato", "shape": "dot"}, {"font": {"color": "white"}, "group": 1, "id": "Marc Barth\u00e9lemy", "label": "Marc Barth\u00e9lemy", "shape": "dot"}, {"font": {"color": "white"}, "group": 1, "id": "Andrea Lancichinetti", "label": "Andrea Lancichinetti", "shape": "dot"}, {"font": {"color": "white"}, "group": 1, "id": "Filippo Radicchi", "label": "Filippo Radicchi", "shape": "dot"}, {"font": {"color": "white"}, "group": 2, "id": "J\u00f6rg Reichardt", "label": "J\u00f6rg Reichardt", "shape": "dot"}, {"font": {"color": "white"}, "group": 2, "id": "Stefan Bornholdt", "label": "Stefan Bornholdt", "shape": "dot"}, {"font": {"color": "white"}, "group": 1, "id": "Darko Hric", "label": "Darko Hric", "shape": "dot"}, {"font": {"color": "white"}, "group": 3, "id": "Jordi Duch", "label": "Jordi Duch", "shape": "dot"}, {"font": {"color": "white"}, "group": 3, "id": "\u00c0lex Arenas", "label": "\u00c0lex Arenas", "shape": "dot"}, {"font": {"color": "white"}, "group": 4, "id": "Jierui Xie", "label": "Jierui Xie", "shape": "dot"}, {"font": {"color": "white"}, "group": 4, "id": "Stephen Kelley", "label": "Stephen Kelley", "shape": "dot"}, {"font": {"color": "white"}, "group": 4, "id": "Boles\u0142aw K. Szyma\u0144ski", "label": "Boles\u0142aw K. Szyma\u0144ski", "shape": "dot"}, {"font": {"color": "white"}, "group": 6, "id": "Jaewon Yang", "label": "Jaewon Yang", "shape": "dot"}, {"font": {"color": "white"}, "group": 6, "id": "Jure Leskovec", "label": "Jure Leskovec", "shape": "dot"}, {"font": {"color": "white"}, "group": 6, "id": "Kevin Lang", "label": "Kevin Lang", "shape": "dot"}, {"font": {"color": "white"}, "group": 6, "id": "Michael W. Mahoney", "label": "Michael W. Mahoney", "shape": "dot"}, {"font": {"color": "white"}, "group": 1, "id": "Vincent D. Blondel", "label": "Vincent D. Blondel", "shape": "dot"}, {"font": {"color": "white"}, "group": 1, "id": "Jean\u2010Loup Guillaume", "label": "Jean\u2010Loup Guillaume", "shape": "dot"}, {"font": {"color": "white"}, "group": 1, "id": "Renaud Lambiotte", "label": "Renaud Lambiotte", "shape": "dot"}, {"font": {"color": "white"}, "group": 1, "id": "Etienne Lefebvre", "label": "Etienne Lefebvre", "shape": "dot"}, {"font": {"color": "white"}, "group": 8, "id": "Ludo Waltman", "label": "Ludo Waltman", "shape": "dot"}, {"font": {"color": "white"}, "group": 8, "id": "Nees Jan van Eck", "label": "Nees Jan van Eck", "shape": "dot"}, {"font": {"color": "white"}, "group": 9, "id": "Symeon Papadopoulos", "label": "Symeon Papadopoulos", "shape": "dot"}, {"font": {"color": "white"}, "group": 9, "id": "Ioannis Kompatsiaris", "label": "Ioannis Kompatsiaris", "shape": "dot"}, {"font": {"color": "white"}, "group": 9, "id": "Athena Vakali", "label": "Athena Vakali", "shape": "dot"}, {"font": {"color": "white"}, "group": 9, "id": "Ploutarchos Spyridonos", "label": "Ploutarchos Spyridonos", "shape": "dot"}, {"font": {"color": "white"}, "group": 6, "id": "Julian Mcauley", "label": "Julian Mcauley", "shape": "dot"}, {"font": {"color": "white"}, "group": 10, "id": "Zhao Yang", "label": "Zhao Yang", "shape": "dot"}, {"font": {"color": "white"}, "group": 10, "id": "Ren\u00e9 Algesheimer", "label": "Ren\u00e9 Algesheimer", "shape": "dot"}, {"font": {"color": "white"}, "group": 10, "id": "Claudio J. Tessone", "label": "Claudio J. Tessone", "shape": "dot"}, {"font": {"color": "white"}, "group": 6, "id": "Julian McAuley", "label": "Julian McAuley", "shape": "dot"}, {"font": {"color": "white"}, "group": 11, "id": "Fragkiskos D. Malliaros", "label": "Fragkiskos D. Malliaros", "shape": "dot"}, {"font": {"color": "white"}, "group": 11, "id": "Michalis Vazirgiannis", "label": "Michalis Vazirgiannis", "shape": "dot"}, {"font": {"color": "white"}, "group": 12, "id": "Muhammad Aqib Javed", "label": "Muhammad Aqib Javed", "shape": "dot"}, {"font": {"color": "white"}, "group": 12, "id": "Muhammad Shahzad Younis", "label": "Muhammad Shahzad Younis", "shape": "dot"}, {"font": {"color": "white"}, "group": 12, "id": "Siddique Latif", "label": "Siddique Latif", "shape": "dot"}, {"font": {"color": "white"}, "group": 12, "id": "Junaid Qadir", "label": "Junaid Qadir", "shape": "dot"}, {"font": {"color": "white"}, "group": 12, "id": "Adeel Baig", "label": "Adeel Baig", "shape": "dot"}, {"font": {"color": "white"}, "group": 13, "id": "Leto Peel", "label": "Leto Peel", "shape": "dot"}, {"font": {"color": "white"}, "group": 13, "id": "Daniel B. Larremore", "label": "Daniel B. Larremore", "shape": "dot"}, {"font": {"color": "white"}, "group": 13, "id": "Aaron Clauset", "label": "Aaron Clauset", "shape": "dot"}, {"font": {"color": "white"}, "group": 14, "id": "Vincent Traag", "label": "Vincent Traag", "shape": "dot"}, {"font": {"color": "white"}, "group": 14, "id": "Jeroen Bruggeman", "label": "Jeroen Bruggeman", "shape": "dot"}, {"font": {"color": "white"}, "group": 15, "id": "Tianbao Yang", "label": "Tianbao Yang", "shape": "dot"}, {"font": {"color": "white"}, "group": 15, "id": "Rong Jin", "label": "Rong Jin", "shape": "dot"}, {"font": {"color": "white"}, "group": 15, "id": "Y\u00fcn Chi", "label": "Y\u00fcn Chi", "shape": "dot"}, {"font": {"color": "white"}, "group": 15, "id": "Shenghuo Zhu", "label": "Shenghuo Zhu", "shape": "dot"}, {"font": {"color": "white"}, "group": 16, "id": "Punam Bedi", "label": "Punam Bedi", "shape": "dot"}, {"font": {"color": "white"}, "group": 16, "id": "Chhavi Sharma", "label": "Chhavi Sharma", "shape": "dot"}, {"font": {"color": "white"}, "group": 17, "id": "Zhenping Li", "label": "Zhenping Li", "shape": "dot"}, {"font": {"color": "white"}, "group": 17, "id": "Shihua Zhang", "label": "Shihua Zhang", "shape": "dot"}, {"font": {"color": "white"}, "group": 17, "id": "Rui\u2010Sheng Wang", "label": "Rui\u2010Sheng Wang", "shape": "dot"}, {"font": {"color": "white"}, "group": 17, "id": "Xiang\u2010Sun Zhang", "label": "Xiang\u2010Sun Zhang", "shape": "dot"}, {"font": {"color": "white"}, "group": 17, "id": "Luonan Chen", "label": "Luonan Chen", "shape": "dot"}, {"font": {"color": "white"}, "group": 18, "id": "Pan Hui", "label": "Pan Hui", "shape": "dot"}, {"font": {"color": "white"}, "group": 18, "id": "Eiko Yoneki", "label": "Eiko Yoneki", "shape": "dot"}, {"font": {"color": "white"}, "group": 18, "id": "Shu Yan Chan", "label": "Shu Yan Chan", "shape": "dot"}, {"font": {"color": "white"}, "group": 18, "id": "Jon Crowcroft", "label": "Jon Crowcroft", "shape": "dot"}, {"font": {"color": "white"}, "group": 19, "id": "Sandro Cavallari", "label": "Sandro Cavallari", "shape": "dot"}, {"font": {"color": "white"}, "group": 19, "id": "Vincent W. Zheng", "label": "Vincent W. Zheng", "shape": "dot"}, {"font": {"color": "white"}, "group": 19, "id": "Hongyun Cai", "label": "Hongyun Cai", "shape": "dot"}, {"font": {"color": "white"}, "group": 19, "id": "Kevin Chen\u2013Chuan Chang", "label": "Kevin Chen\u2013Chuan Chang", "shape": "dot"}, {"font": {"color": "white"}, "group": 19, "id": "Erik Cambria", "label": "Erik Cambria", "shape": "dot"}, {"font": {"color": "white"}, "group": 14, "id": "Paul Van Dooren", "label": "Paul Van Dooren", "shape": "dot"}, {"font": {"color": "white"}, "group": 14, "id": "Yurii Nesterov", "label": "Yurii Nesterov", "shape": "dot"}, {"font": {"color": "white"}, "group": 20, "id": "Xing Su", "label": "Xing Su", "shape": "dot"}, {"font": {"color": "white"}, "group": 20, "id": "Shan Xue", "label": "Shan Xue", "shape": "dot"}, {"font": {"color": "white"}, "group": 20, "id": "Fanzhen Liu", "label": "Fanzhen Liu", "shape": "dot"}, {"font": {"color": "white"}, "group": 20, "id": "Jia Wu", "label": "Jia Wu", "shape": "dot"}, {"font": {"color": "white"}, "group": 20, "id": "Jian Yang", "label": "Jian Yang", "shape": "dot"}, {"font": {"color": "white"}, "group": 20, "id": "Chuan Zhou", "label": "Chuan Zhou", "shape": "dot"}, {"font": {"color": "white"}, "group": 20, "id": "Wenbin Hu", "label": "Wenbin Hu", "shape": "dot"}, {"font": {"color": "white"}, "group": 20, "id": "Cecile Paris", "label": "Cecile Paris", "shape": "dot"}, {"font": {"color": "white"}, "group": 20, "id": "Surya Nepal", "label": "Surya Nepal", "shape": "dot"}, {"font": {"color": "white"}, "group": 20, "id": "Di Jin", "label": "Di Jin", "shape": "dot"}, {"font": {"color": "white"}, "group": 20, "id": "Quan Z. Sheng", "label": "Quan Z. Sheng", "shape": "dot"}, {"font": {"color": "white"}, "group": 20, "id": "Philip S. Yu", "label": "Philip S. Yu", "shape": "dot"}, {"font": {"color": "white"}, "group": 21, "id": "Ioannis Psorakis", "label": "Ioannis Psorakis", "shape": "dot"}, {"font": {"color": "white"}, "group": 21, "id": "Stephen Roberts", "label": "Stephen Roberts", "shape": "dot"}, {"font": {"color": "white"}, "group": 21, "id": "Mark Ebden", "label": "Mark Ebden", "shape": "dot"}, {"font": {"color": "white"}, "group": 21, "id": "Ben C. Sheldon", "label": "Ben C. Sheldon", "shape": "dot"}, {"font": {"color": "white"}, "group": 5, "id": "Pasquale De Meo", "label": "Pasquale De Meo", "shape": "dot"}, {"font": {"color": "white"}, "group": 5, "id": "Emilio Ferrara", "label": "Emilio Ferrara", "shape": "dot"}, {"font": {"color": "white"}, "group": 5, "id": "Giacomo Fiumara", "label": "Giacomo Fiumara", "shape": "dot"}, {"font": {"color": "white"}, "group": 5, "id": "Alessandro Provetti", "label": "Alessandro Provetti", "shape": "dot"}, {"font": {"color": "white"}, "group": 7, "id": "Lei Tang", "label": "Lei Tang", "shape": "dot"}, {"font": {"color": "white"}, "group": 7, "id": "Huan Liu", "label": "Huan Liu", "shape": "dot"}, {"font": {"color": "white"}, "group": 1, "id": "Martin Rosvall", "label": "Martin Rosvall", "shape": "dot"}, {"font": {"color": "white"}, "group": 1, "id": "Alcides Viamontes Esquivel", "label": "Alcides Viamontes Esquivel", "shape": "dot"}, {"font": {"color": "white"}, "group": 1, "id": "Jevin D. West", "label": "Jevin D. West", "shape": "dot"}, {"font": {"color": "white"}, "group": 0, "id": "Zhizhi Yu", "label": "Zhizhi Yu", "shape": "dot"}, {"font": {"color": "white"}, "group": 0, "id": "Pengfei Jiao", "label": "Pengfei Jiao", "shape": "dot"}, {"font": {"color": "white"}, "group": 0, "id": "Shirui Pan", "label": "Shirui Pan", "shape": "dot"}, {"font": {"color": "white"}, "group": 0, "id": "Dongxiao He", "label": "Dongxiao He", "shape": "dot"}, {"font": {"color": "white"}, "group": 0, "id": "Philip L. H. Yu", "label": "Philip L. H. Yu", "shape": "dot"}, {"font": {"color": "white"}, "group": 0, "id": "Weixiong Zhang", "label": "Weixiong Zhang", "shape": "dot"}, {"font": {"color": "white"}, "group": 18, "id": "Ian X. Y. Leung", "label": "Ian X. Y. Leung", "shape": "dot"}, {"font": {"color": "white"}, "group": 18, "id": "P\u00edetro Li\u00f3", "label": "P\u00edetro Li\u00f3", "shape": "dot"}]);
+                  edges = new vis.DataSet([{"from": "Santo Fortunato", "to": "Marc Barth\u00e9lemy"}, {"from": "Santo Fortunato", "to": "Andrea Lancichinetti"}, {"from": "Santo Fortunato", "to": "Filippo Radicchi"}, {"from": "Santo Fortunato", "to": "Darko Hric"}, {"from": "Andrea Lancichinetti", "to": "Filippo Radicchi"}, {"from": "Andrea Lancichinetti", "to": "Martin Rosvall"}, {"from": "Andrea Lancichinetti", "to": "Alcides Viamontes Esquivel"}, {"from": "Andrea Lancichinetti", "to": "Jevin D. West"}, {"from": "Andrea Lancichinetti", "to": "Renaud Lambiotte"}, {"from": "J\u00f6rg Reichardt", "to": "Stefan Bornholdt"}, {"from": "Jordi Duch", "to": "\u00c0lex Arenas"}, {"from": "Jierui Xie", "to": "Stephen Kelley"}, {"from": "Jierui Xie", "to": "Boles\u0142aw K. Szyma\u0144ski"}, {"from": "Stephen Kelley", "to": "Boles\u0142aw K. Szyma\u0144ski"}, {"from": "Jaewon Yang", "to": "Jure Leskovec"}, {"from": "Jaewon Yang", "to": "Julian Mcauley"}, {"from": "Jaewon Yang", "to": "Julian McAuley"}, {"from": "Jure Leskovec", "to": "Kevin Lang"}, {"from": "Jure Leskovec", "to": "Michael W. Mahoney"}, {"from": "Jure Leskovec", "to": "Julian Mcauley"}, {"from": "Jure Leskovec", "to": "Julian McAuley"}, {"from": "Kevin Lang", "to": "Michael W. Mahoney"}, {"from": "Vincent D. Blondel", "to": "Jean\u2010Loup Guillaume"}, {"from": "Vincent D. Blondel", "to": "Renaud Lambiotte"}, {"from": "Vincent D. Blondel", "to": "Etienne Lefebvre"}, {"from": "Jean\u2010Loup Guillaume", "to": "Renaud Lambiotte"}, {"from": "Jean\u2010Loup Guillaume", "to": "Etienne Lefebvre"}, {"from": "Renaud Lambiotte", "to": "Etienne Lefebvre"}, {"from": "Renaud Lambiotte", "to": "Martin Rosvall"}, {"from": "Renaud Lambiotte", "to": "Alcides Viamontes Esquivel"}, {"from": "Renaud Lambiotte", "to": "Jevin D. West"}, {"from": "Ludo Waltman", "to": "Nees Jan van Eck"}, {"from": "Symeon Papadopoulos", "to": "Ioannis Kompatsiaris"}, {"from": "Symeon Papadopoulos", "to": "Athena Vakali"}, {"from": "Symeon Papadopoulos", "to": "Ploutarchos Spyridonos"}, {"from": "Ioannis Kompatsiaris", "to": "Athena Vakali"}, {"from": "Ioannis Kompatsiaris", "to": "Ploutarchos Spyridonos"}, {"from": "Athena Vakali", "to": "Ploutarchos Spyridonos"}, {"from": "Zhao Yang", "to": "Ren\u00e9 Algesheimer"}, {"from": "Zhao Yang", "to": "Claudio J. Tessone"}, {"from": "Ren\u00e9 Algesheimer", "to": "Claudio J. Tessone"}, {"from": "Fragkiskos D. Malliaros", "to": "Michalis Vazirgiannis"}, {"from": "Muhammad Aqib Javed", "to": "Muhammad Shahzad Younis"}, {"from": "Muhammad Aqib Javed", "to": "Siddique Latif"}, {"from": "Muhammad Aqib Javed", "to": "Junaid Qadir"}, {"from": "Muhammad Aqib Javed", "to": "Adeel Baig"}, {"from": "Muhammad Shahzad Younis", "to": "Siddique Latif"}, {"from": "Muhammad Shahzad Younis", "to": "Junaid Qadir"}, {"from": "Muhammad Shahzad Younis", "to": "Adeel Baig"}, {"from": "Siddique Latif", "to": "Junaid Qadir"}, {"from": "Siddique Latif", "to": "Adeel Baig"}, {"from": "Junaid Qadir", "to": "Adeel Baig"}, {"from": "Leto Peel", "to": "Daniel B. Larremore"}, {"from": "Leto Peel", "to": "Aaron Clauset"}, {"from": "Daniel B. Larremore", "to": "Aaron Clauset"}, {"from": "Vincent Traag", "to": "Jeroen Bruggeman"}, {"from": "Vincent Traag", "to": "Paul Van Dooren"}, {"from": "Vincent Traag", "to": "Yurii Nesterov"}, {"from": "Tianbao Yang", "to": "Rong Jin"}, {"from": "Tianbao Yang", "to": "Y\u00fcn Chi"}, {"from": "Tianbao Yang", "to": "Shenghuo Zhu"}, {"from": "Rong Jin", "to": "Y\u00fcn Chi"}, {"from": "Rong Jin", "to": "Shenghuo Zhu"}, {"from": "Y\u00fcn Chi", "to": "Shenghuo Zhu"}, {"from": "Punam Bedi", "to": "Chhavi Sharma"}, {"from": "Zhenping Li", "to": "Shihua Zhang"}, {"from": "Zhenping Li", "to": "Rui\u2010Sheng Wang"}, {"from": "Zhenping Li", "to": "Xiang\u2010Sun Zhang"}, {"from": "Zhenping Li", "to": "Luonan Chen"}, {"from": "Shihua Zhang", "to": "Rui\u2010Sheng Wang"}, {"from": "Shihua Zhang", "to": "Xiang\u2010Sun Zhang"}, {"from": "Shihua Zhang", "to": "Luonan Chen"}, {"from": "Rui\u2010Sheng Wang", "to": "Xiang\u2010Sun Zhang"}, {"from": "Rui\u2010Sheng Wang", "to": "Luonan Chen"}, {"from": "Xiang\u2010Sun Zhang", "to": "Luonan Chen"}, {"from": "Pan Hui", "to": "Eiko Yoneki"}, {"from": "Pan Hui", "to": "Shu Yan Chan"}, {"from": "Pan Hui", "to": "Jon Crowcroft"}, {"from": "Pan Hui", "to": "Ian X. Y. Leung"}, {"from": "Pan Hui", "to": "P\u00edetro Li\u00f3"}, {"from": "Eiko Yoneki", "to": "Shu Yan Chan"}, {"from": "Eiko Yoneki", "to": "Jon Crowcroft"}, {"from": "Shu Yan Chan", "to": "Jon Crowcroft"}, {"from": "Jon Crowcroft", "to": "Ian X. Y. Leung"}, {"from": "Jon Crowcroft", "to": "P\u00edetro Li\u00f3"}, {"from": "Sandro Cavallari", "to": "Vincent W. Zheng"}, {"from": "Sandro Cavallari", "to": "Hongyun Cai"}, {"from": "Sandro Cavallari", "to": "Kevin Chen\u2013Chuan Chang"}, {"from": "Sandro Cavallari", "to": "Erik Cambria"}, {"from": "Vincent W. Zheng", "to": "Hongyun Cai"}, {"from": "Vincent W. Zheng", "to": "Kevin Chen\u2013Chuan Chang"}, {"from": "Vincent W. Zheng", "to": "Erik Cambria"}, {"from": "Hongyun Cai", "to": "Kevin Chen\u2013Chuan Chang"}, {"from": "Hongyun Cai", "to": "Erik Cambria"}, {"from": "Kevin Chen\u2013Chuan Chang", "to": "Erik Cambria"}, {"from": "Paul Van Dooren", "to": "Yurii Nesterov"}, {"from": "Xing Su", "to": "Shan Xue"}, {"from": "Xing Su", "to": "Fanzhen Liu"}, {"from": "Xing Su", "to": "Jia Wu"}, {"from": "Xing Su", "to": "Jian Yang"}, {"from": "Xing Su", "to": "Chuan Zhou"}, {"from": "Xing Su", "to": "Wenbin Hu"}, {"from": "Xing Su", "to": "Cecile Paris"}, {"from": "Xing Su", "to": "Surya Nepal"}, {"from": "Xing Su", "to": "Di Jin"}, {"from": "Xing Su", "to": "Quan Z. Sheng"}, {"from": "Xing Su", "to": "Philip S. Yu"}, {"from": "Shan Xue", "to": "Fanzhen Liu"}, {"from": "Shan Xue", "to": "Jia Wu"}, {"from": "Shan Xue", "to": "Jian Yang"}, {"from": "Shan Xue", "to": "Chuan Zhou"}, {"from": "Shan Xue", "to": "Wenbin Hu"}, {"from": "Shan Xue", "to": "Cecile Paris"}, {"from": "Shan Xue", "to": "Surya Nepal"}, {"from": "Shan Xue", "to": "Di Jin"}, {"from": "Shan Xue", "to": "Quan Z. Sheng"}, {"from": "Shan Xue", "to": "Philip S. Yu"}, {"from": "Fanzhen Liu", "to": "Jia Wu"}, {"from": "Fanzhen Liu", "to": "Jian Yang"}, {"from": "Fanzhen Liu", "to": "Chuan Zhou"}, {"from": "Fanzhen Liu", "to": "Wenbin Hu"}, {"from": "Fanzhen Liu", "to": "Cecile Paris"}, {"from": "Fanzhen Liu", "to": "Surya Nepal"}, {"from": "Fanzhen Liu", "to": "Di Jin"}, {"from": "Fanzhen Liu", "to": "Quan Z. Sheng"}, {"from": "Fanzhen Liu", "to": "Philip S. Yu"}, {"from": "Jia Wu", "to": "Jian Yang"}, {"from": "Jia Wu", "to": "Chuan Zhou"}, {"from": "Jia Wu", "to": "Wenbin Hu"}, {"from": "Jia Wu", "to": "Cecile Paris"}, {"from": "Jia Wu", "to": "Surya Nepal"}, {"from": "Jia Wu", "to": "Di Jin"}, {"from": "Jia Wu", "to": "Quan Z. Sheng"}, {"from": "Jia Wu", "to": "Philip S. Yu"}, {"from": "Jia Wu", "to": "Zhizhi Yu"}, {"from": "Jia Wu", "to": "Pengfei Jiao"}, {"from": "Jia Wu", "to": "Shirui Pan"}, {"from": "Jia Wu", "to": "Dongxiao He"}, {"from": "Jia Wu", "to": "Philip L. H. Yu"}, {"from": "Jia Wu", "to": "Weixiong Zhang"}, {"from": "Jian Yang", "to": "Chuan Zhou"}, {"from": "Jian Yang", "to": "Wenbin Hu"}, {"from": "Jian Yang", "to": "Cecile Paris"}, {"from": "Jian Yang", "to": "Surya Nepal"}, {"from": "Jian Yang", "to": "Di Jin"}, {"from": "Jian Yang", "to": "Quan Z. Sheng"}, {"from": "Jian Yang", "to": "Philip S. Yu"}, {"from": "Chuan Zhou", "to": "Wenbin Hu"}, {"from": "Chuan Zhou", "to": "Cecile Paris"}, {"from": "Chuan Zhou", "to": "Surya Nepal"}, {"from": "Chuan Zhou", "to": "Di Jin"}, {"from": "Chuan Zhou", "to": "Quan Z. Sheng"}, {"from": "Chuan Zhou", "to": "Philip S. Yu"}, {"from": "Wenbin Hu", "to": "Cecile Paris"}, {"from": "Wenbin Hu", "to": "Surya Nepal"}, {"from": "Wenbin Hu", "to": "Di Jin"}, {"from": "Wenbin Hu", "to": "Quan Z. Sheng"}, {"from": "Wenbin Hu", "to": "Philip S. Yu"}, {"from": "Cecile Paris", "to": "Surya Nepal"}, {"from": "Cecile Paris", "to": "Di Jin"}, {"from": "Cecile Paris", "to": "Quan Z. Sheng"}, {"from": "Cecile Paris", "to": "Philip S. Yu"}, {"from": "Surya Nepal", "to": "Di Jin"}, {"from": "Surya Nepal", "to": "Quan Z. Sheng"}, {"from": "Surya Nepal", "to": "Philip S. Yu"}, {"from": "Di Jin", "to": "Quan Z. Sheng"}, {"from": "Di Jin", "to": "Philip S. Yu"}, {"from": "Di Jin", "to": "Zhizhi Yu"}, {"from": "Di Jin", "to": "Pengfei Jiao"}, {"from": "Di Jin", "to": "Shirui Pan"}, {"from": "Di Jin", "to": "Dongxiao He"}, {"from": "Di Jin", "to": "Philip L. H. Yu"}, {"from": "Di Jin", "to": "Weixiong Zhang"}, {"from": "Quan Z. Sheng", "to": "Philip S. Yu"}, {"from": "Ioannis Psorakis", "to": "Stephen Roberts"}, {"from": "Ioannis Psorakis", "to": "Mark Ebden"}, {"from": "Ioannis Psorakis", "to": "Ben C. Sheldon"}, {"from": "Stephen Roberts", "to": "Mark Ebden"}, {"from": "Stephen Roberts", "to": "Ben C. Sheldon"}, {"from": "Mark Ebden", "to": "Ben C. Sheldon"}, {"from": "Pasquale De Meo", "to": "Emilio Ferrara"}, {"from": "Pasquale De Meo", "to": "Giacomo Fiumara"}, {"from": "Pasquale De Meo", "to": "Alessandro Provetti"}, {"from": "Emilio Ferrara", "to": "Giacomo Fiumara"}, {"from": "Emilio Ferrara", "to": "Alessandro Provetti"}, {"from": "Giacomo Fiumara", "to": "Alessandro Provetti"}, {"from": "Lei Tang", "to": "Huan Liu"}, {"from": "Martin Rosvall", "to": "Alcides Viamontes Esquivel"}, {"from": "Martin Rosvall", "to": "Jevin D. West"}, {"from": "Alcides Viamontes Esquivel", "to": "Jevin D. West"}, {"from": "Zhizhi Yu", "to": "Pengfei Jiao"}, {"from": "Zhizhi Yu", "to": "Shirui Pan"}, {"from": "Zhizhi Yu", "to": "Dongxiao He"}, {"from": "Zhizhi Yu", "to": "Philip L. H. Yu"}, {"from": "Zhizhi Yu", "to": "Weixiong Zhang"}, {"from": "Pengfei Jiao", "to": "Shirui Pan"}, {"from": "Pengfei Jiao", "to": "Dongxiao He"}, {"from": "Pengfei Jiao", "to": "Philip L. H. Yu"}, {"from": "Pengfei Jiao", "to": "Weixiong Zhang"}, {"from": "Shirui Pan", "to": "Dongxiao He"}, {"from": "Shirui Pan", "to": "Philip L. H. Yu"}, {"from": "Shirui Pan", "to": "Weixiong Zhang"}, {"from": "Dongxiao He", "to": "Philip L. H. Yu"}, {"from": "Dongxiao He", "to": "Weixiong Zhang"}, {"from": "Philip L. H. Yu", "to": "Weixiong Zhang"}, {"from": "Ian X. Y. Leung", "to": "P\u00edetro Li\u00f3"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
